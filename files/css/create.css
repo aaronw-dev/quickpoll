@@ -1,0 +1,71 @@
+.poll-question {
+    font-weight: 300;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px 10px;
+    margin-bottom: 20px;
+    font-size: 2em;
+    width: 100%;
+    height: min-content;
+    white-space: pre;
+    word-break: break-word;
+    text-wrap: wrap;
+    border: none;
+}
+
+.poll-options {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 0px 30px;
+    gap: 20px;
+    align-items: center;
+    height: 80vh;
+}
+
+.poll-options div {
+    font-size: 30px;
+    padding: 20px 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    flex-grow: 1;
+    background-color: #efefef;
+    text-align: center;
+    text-wrap: wrap;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.poll-options div>div {
+    width: 100%;
+    text-wrap: wrap;
+    word-wrap: break-word;
+}
+
+#addOption {
+    font-size: 20px;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 10px;
+    background-color: rgb(174, 209, 255);
+}
+
+#addOption:active {
+    filter: grayscale(0.5);
+}
+
+#publish {
+    font-size: 20px;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 10px;
+    background-color: rgb(124, 245, 99);
+    margin: auto;
+    display: block;
+    margin-top: 20px;
+}

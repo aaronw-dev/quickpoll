@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickPoll - Create A Poll</title>
+    <link rel="stylesheet" href="/files/css/main.css">
+    <link rel="stylesheet" href="/files/css/create.css">
+</head>
+
+<body>
+    <h1 id="poll-title" class="poll-question" contenteditable="true" placeholder="Create a title"></h1>
+    <div class="poll-options">
+        <button id="addOption" onclick="addPollOption()">+ Add an option</button>
+    </div>
+    <button id="publish" onclick="createPoll()">Publish Poll</button>
+    <script src="/files/js/create.js"></script>
+</body>
+
+</html>

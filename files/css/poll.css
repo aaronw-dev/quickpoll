@@ -1,0 +1,30 @@
+.poll-question {
+    font-weight: 300;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0px 10px;
+}
+
+.poll-options {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 0px 30px;
+    gap: 20px;
+    align-items: center;
+    height: 85vh;
+}
+
+.poll-options button {
+    font-size: 30px;
+    /*padding: 20px 20px;*/
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    flex-grow: 1;
+    background-color: #efefef;
+}
+
+.poll-options button:active {
+    filter: brightness(0.8);
+}
