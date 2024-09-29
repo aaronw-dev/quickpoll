@@ -29,17 +29,26 @@ def create():
 def createPoll():
     generatedid = randomID(8)
     activepolls[generatedid] = request.json
+    for option in activepolls[generatedid]["options"]:
+        option["votes"] = 0
+    print(activepolls)
     return jsonify({"status": "ok", "poll_url": generatedid})
 
 
 @app.route("/poll/<id>")
 def poll(id):
+    pi = activepolls[id]
     return render_template(
         "wantosend.html",
-        name=id,
+        name="QuickPoll",
         action="wants to ask",
-        question="What is wrong with you?",
+        question=pi["title"],
     )
+
+
+@app.route("/monitor/<id>")
+def monitor(id):
+    return render_template("monitor.html", title=activepolls[id]["title"])
 
 
 @app.route("/pollinfo/<id>")
@@ -52,9 +61,23 @@ def pollquestions(id):
     return render_template("poll.html")
 
 
+@app.route("/poll/<id>/done")
+def done(id):
+    return render_template("thankspoll.html")
+
+
 @socketio.on("vote")
 def vote(json):
-    print(json)
+    print(activepolls[json["id"]]["options"][json["vote"]])
+    activepolls[json["id"]]["options"][json["vote"]]["votes"] += 1
+    socketio.emit(
+        "newvote",
+        {
+            "option": json["vote"],
+            "votes": activepolls[json["id"]]["options"][json["vote"]]["votes"],
+        },
+        include_self=False,
+    )
     return json
 
 

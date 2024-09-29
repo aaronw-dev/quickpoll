@@ -11,13 +11,12 @@ async function doAll() {
     titleElement.innerText = pollInfo.title
     for (let i = 0; i < pollInfo.options.length; i++) {
         item = pollInfo.options[i]
-        let option = document.createElement('button')
-        option.innerText = item.text
-        pollOptions.appendChild(option)
-        option.addEventListener("click", e => {
-            socket.emit("vote", { "vote": i, "id": pollID })
-            location.href = location.href.replace("/questions", "") + "/done"
-        });
+        let optionContainer = document.createElement("div")
+        let optionEditable = document.createElement("div")
+        optionEditable.innerText = item.text + " - " + item.votes + " votes"
+        optionContainer.setAttribute("text", item.text)
+        optionContainer.appendChild(optionEditable)
+        pollOptions.appendChild(optionContainer)
     }
 }
 
@@ -26,3 +25,7 @@ var socket = io();
 socket.on('connect', function () {
     doAll()
 });
+
+socket.on("newvote", function (data) {
+    pollOptions.children[data.option].innerText = pollOptions.children[data.option].getAttribute("text") + " - " + data.votes + " votes"
+})
